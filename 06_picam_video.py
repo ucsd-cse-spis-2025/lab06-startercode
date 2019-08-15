@@ -29,36 +29,40 @@ if __name__ == '__main__':
     try:
         
         # Continuously capture frames from the camera
-        # Note that we chose the RGB format
-        for frame in camera.capture_continuous(rawframe, format = 'rgb', use_video_port = True):
+        # Each rawframe is accessible as ´frame´ inside the for-loop
+        # Note that the format is BGR instead of RGB because we want to use openCV later on and it only supports BGR
+        for frame in camera.capture_continuous(rawframe, format = 'bgr', use_video_port = True):
 
             # Clear the rawframe in preparation for the next frame
+            # Do not modify this line of code
             rawframe.truncate(0)
 
 
             # Create a numpy array representing the image
-            img_np = frame.array
+            # Do not modify this line of code
+            image = frame.array
 
 
             #-----------------------------------------------------
-            # We will use numpy to do all our image manipulations
+            # We will use numpy to do our image manipulations
             #-----------------------------------------------------
 
             # Make a copy of the image
-            img_np1 = img_np.copy()
-            img_np1.setflags(write=1)                                   # Making the array mutable                                                                                                      
+            image2 = image.copy()
+            image2.setflags(write=1)                                   # Making the array mutable                                                                                                      
 
             # Modify the copy of the image
             # This is where you would write your code to manipulate the image (invert it, make it grayscale, etc.)
-            w,h,d = img_np1.shape
-            img_np1[w//4:3*w//4 , h//4:3*h//4 , :] = 255 - img_np1[w//4:3*w//4 , h//4:3*h//4 , :]
+            # Remember: images are stored as BGR
+            w,h,d = image2.shape
+            image2[w//4:3*w//4 , h//4:3*h//4 , :] = 255 - image2[w//4:3*w//4 , h//4:3*h//4 , :]
 
 
             # Show the frames
-            # Note that OpenCV assumes BRG color representation, and we therefore swapped the r and b color channels
+            cv2.imshow("Orignal frame", image)
+            cv2.imshow("Modified frame", image2)
+            
             # The waitKey command is needed to force openCV to show the image
-            cv2.imshow("Orignal frame", img_np[:,:,::-1])
-            cv2.imshow("Modified frame", img_np1[:,:,::-1])
             cv2.waitKey(1)
 
 
