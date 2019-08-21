@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This program illustrates how to capture frames in a video stream and how to do further processing on them
 # It uses numpy to do the calculations and OpenCV to display the frames
 
