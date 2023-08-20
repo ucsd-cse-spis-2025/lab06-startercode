@@ -1,2 +1,2 @@
 # lab06-startercode
-Starter code for lab06
+Starter code for lab06.
