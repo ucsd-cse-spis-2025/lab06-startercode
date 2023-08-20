@@ -22,20 +22,17 @@ GPIO.output(LedPin, GPIO.LOW)                   # Set LedPin low to turn the led
 
 
 # Main program 
-if __name__ == '__main__':                      # Program starts here
+try:
 
-    try:
-
-        # This code repeats forever
-        while True:
+    # This code repeats forever
+    while True:
                 
-            button = GPIO.input(BtnPin)
-            print(button)
+        button = GPIO.input(BtnPin)
+        print(button)
 
 
-
-    # Reset by pressing CTRL + C
-    except KeyboardInterrupt:              
+# Reset by pressing CTRL + C
+except KeyboardInterrupt:              
         print("Program stopped by User")
         GPIO.output(LedPin, GPIO.LOW)          	# LED off
         GPIO.cleanup()                          # Release resource
