@@ -21,19 +21,20 @@ GPIO.output(LedPin, GPIO.LOW)                   # Set LedPin low to turn the led
 # Main program 
 try:
         
-	# This code repeats forever
-	while True:
+    # This code repeats forever
+    while True:
 
-		print('LED on')
-		GPIO.output(LedPin, GPIO.HIGH)      # LED on
-		time.sleep(0.5)
-		print('LED off')
-		GPIO.output(LedPin, GPIO.LOW)  	# LED off
-		time.sleep(0.5)
+        print('LED on')
+        GPIO.output(LedPin, GPIO.HIGH)      # LED on
+        time.sleep(0.5)
+        print('LED off')
+        GPIO.output(LedPin, GPIO.LOW)  	# LED off
+        time.sleep(0.5)
 
 
 # Reset by pressing CTRL + C
 except KeyboardInterrupt:              
-		print("Program stopped by User")
-		GPIO.output(LedPin, GPIO.LOW)          	# LED off
-		GPIO.cleanup()                          # Release resource
+        print("Program stopped by User")
+        GPIO.output(LedPin, GPIO.LOW)          	# LED off
+        GPIO.cleanup()                          # Release resource
+        
